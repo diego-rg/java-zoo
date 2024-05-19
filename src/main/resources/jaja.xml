@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rexistros>
+    <rexistro>
+        <data>19-05-2024 18:57:50</data>
+        <nomeEmpregado>Carla</nomeEmpregado>
+        <codigoAnimal>EL0011</codigoAnimal>
+        <tipoAnimal>Elefante</tipoAnimal>
+        <accion>REVISION</accion>
+    </rexistro>
+</rexistros>

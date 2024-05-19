@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rexistros>
+    <rexistro>
+        <data>04-05-2024 16:08:53</data>
+        <nomeEmpregado>Sira</nomeEmpregado>
+        <codigoAnimal>LE0089</codigoAnimal>
+        <tipoAnimal>Leon</tipoAnimal>
+        <accion>VACINA</accion>
+    </rexistro>
+    <rexistro>
+        <data>04-05-2024 17:46:57</data>
+        <nomeEmpregado>Xiana</nomeEmpregado>
+        <codigoAnimal>TI0021</codigoAnimal>
+        <tipoAnimal>Tigre</tipoAnimal>
+        <accion>DAR_AUGA</accion>
+    </rexistro>
+    <rexistro>
+        <data>04-05-2024 17:47:08</data>
+        <nomeEmpregado>Antón</nomeEmpregado>
+        <accion>CONTROL_PERIMETRO</accion>
+    </rexistro>
+</rexistros>
