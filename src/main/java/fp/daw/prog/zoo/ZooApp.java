@@ -109,8 +109,9 @@ public class ZooApp {
 			case 5:
 				// Configuramos outro ficheiro para gardar o rexistro de accións
 				nomeFicheiroDatos = solicitarNomeFicheiroPorConsola();
-				ctrlRexistro = inicializarControladorRexistrosPorConsola(TipoFicheiro.XML, RUTA_POR_DEFECTO,
-						nomeFicheiroDatos);
+				Integer novaIdTipoFicheiro = Util.solicitarExtension();
+				ctrlRexistro = inicializarControladorRexistrosPorConsola(TipoFicheiro.getTipo(novaIdTipoFicheiro),
+						RUTA_POR_DEFECTO, nomeFicheiroDatos);
 				break;
 			case 6:
 				// Se dá un erro porque inserimos un valor non numérico, entón limpamos o buffer
