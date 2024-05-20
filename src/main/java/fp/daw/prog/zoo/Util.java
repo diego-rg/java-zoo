@@ -1,5 +1,6 @@
 package fp.daw.prog.zoo;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -68,6 +69,24 @@ public class Util {
 					return tipo;
 			}
 			return null;
+		}
+	}
+
+	/**
+	 * Comproba se existe o directorio indicado polo usuario e se non crea a carpeta correspondente
+	 * 
+	 * @param descricion Descricion da acción que realizamos referida ao dato lido
+	 * @return Dato inserido pola consola
+	 */
+	public static void comprobarDirectorio(String ruta) {
+		File directory = new File(ruta);
+		if (!directory.exists()) {
+			try {
+				directory.mkdir();
+				System.out.println("Novo directorio creado!");
+			} catch (Exception e) {
+				System.out.println("Erro ao crear o directorio: " + e.getMessage());
+			}
 		}
 	}
 
@@ -191,7 +210,7 @@ public class Util {
 	 * @return Dato inserido pola consola
 	 */
 	public static String solicitarTextoPorConsola(String descricion) {
-		System.out.print(descricion);
+		System.out.println(descricion);
 		return scanner.nextLine(); // Como é un dato non permitimos unha liña completa, so unha palabra
 	}
 

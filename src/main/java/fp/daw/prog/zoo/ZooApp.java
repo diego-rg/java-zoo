@@ -1,5 +1,6 @@
 package fp.daw.prog.zoo;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,10 +75,19 @@ public class ZooApp {
 	public void executar() throws Exception {
 		int opcion = 0;
 
+		// Solicitamos o nome do ficheiro
 		String nomeFicheiroDatos = solicitarNomeFicheiroPorConsola();
+		// Solicitamos a extension
 		Integer idTipoFicheiro = Util.solicitarExtension();
+		// Solicitamos o directorio pai onde se gardará
+		String directorio = Util.solicitarDatoPorConsola(
+				"Indica a subcarpeta en 'resources' onde o queres gardar ou preme enter para gardala directamente nese directorio");
+		// Ruta final indicada tendo eu conta o inputo do usuario
+		String rutaFinal = directorio.isEmpty() ? RUTA_POR_DEFECTO : RUTA_POR_DEFECTO + directorio + File.separator;
+		// Creamos a carpeta se non existe
+		Util.comprobarDirectorio(rutaFinal);
 
-		ctrlRexistro = inicializarControladorRexistrosPorConsola(TipoFicheiro.getTipo(idTipoFicheiro), RUTA_POR_DEFECTO,
+		ctrlRexistro = inicializarControladorRexistrosPorConsola(TipoFicheiro.getTipo(idTipoFicheiro), rutaFinal,
 				nomeFicheiroDatos);
 		do {
 			mostrarMenuPrincipalPorConsola();
@@ -178,7 +188,7 @@ public class ZooApp {
 			return null;
 		}
 		if (tipoFicheiro.equals(TipoFicheiro.XML)) {
-			ctrlRexistro = new CtrlRexistroXML(RUTA_POR_DEFECTO, nomeFicheiro);
+			ctrlRexistro = new CtrlRexistroXML(rutaFicheiro, nomeFicheiro);
 		}
 		// Se tiveramos implementado outro control de rexistro con acceso a outro tipo de ficheiro ou medio
 		// físico
