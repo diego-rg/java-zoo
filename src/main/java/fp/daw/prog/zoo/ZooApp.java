@@ -9,6 +9,7 @@ import fp.daw.prog.zoo.animal.medio.Acuatico;
 import fp.daw.prog.zoo.animal.medio.Aereo;
 import fp.daw.prog.zoo.animal.medio.Terrestre;
 import fp.daw.prog.zoo.control.CtrlRexistro;
+import fp.daw.prog.zoo.control.CtrlRexistroTexto;
 import fp.daw.prog.zoo.control.CtrlRexistroXML;
 import fp.daw.prog.zoo.persoa.Auxiliar;
 import fp.daw.prog.zoo.persoa.Coidador;
@@ -74,7 +75,10 @@ public class ZooApp {
 		int opcion = 0;
 
 		String nomeFicheiroDatos = solicitarNomeFicheiroPorConsola();
-		ctrlRexistro = inicializarControladorRexistrosPorConsola(TipoFicheiro.XML, RUTA_POR_DEFECTO, nomeFicheiroDatos);
+		Integer idTipoFicheiro = Util.solicitarExtension();
+
+		ctrlRexistro = inicializarControladorRexistrosPorConsola(TipoFicheiro.getTipo(idTipoFicheiro), RUTA_POR_DEFECTO,
+				nomeFicheiroDatos);
 		do {
 			mostrarMenuPrincipalPorConsola();
 			opcion = Util.seleccionarOpcion(0, 7);
@@ -177,10 +181,9 @@ public class ZooApp {
 		}
 		// Se tiveramos implementado outro control de rexistro con acceso a outro tipo de ficheiro ou medio
 		// físico
-		// else if (tipoFicheiro.equals(TipoFicheiro.TXT)) {
-		// ctrlRexistro = new CtrlRexistroTexto(rutaFicheiro, nomeFicheiro);
-		// }
-		else {
+		else if (tipoFicheiro.equals(TipoFicheiro.TXT)) {
+			ctrlRexistro = new CtrlRexistroTexto(rutaFicheiro, nomeFicheiro);
+		} else {
 			System.out.print("\n  [ERRO] Opción inválida, o tipo de ficheiro indicado non existe");
 		}
 		return ctrlRexistro;
@@ -193,7 +196,7 @@ public class ZooApp {
 		System.out.println("\n## Menú Principal ##");
 		System.out.println("   1. Mostrar empregados e animais");
 		System.out.println("   2. Engadir unha acción ao rexistro");
-		System.out.println("   3. Mostrar os rexistrosdas accións");
+		System.out.println("   3. Mostrar os rexistros das accións");
 		System.out.println("   4. Probar accións de animal");
 		System.out.println("   5. Modificar o ficheiro de rexistros seleccionado");
 		System.out.println("   6. Renomear o ficheiro de rexistros");
@@ -341,8 +344,6 @@ public class ZooApp {
 			((Acuatico) animal).nadar();
 		if (animal instanceof Aereo)
 			((Aereo) animal).voar();
-		if (animal instanceof Terrestre)
-			((Terrestre) animal).mover();
 		if (animal instanceof Terrestre)
 			((Terrestre) animal).mover();
 	}

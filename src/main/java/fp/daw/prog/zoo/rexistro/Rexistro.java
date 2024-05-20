@@ -24,7 +24,7 @@ public class Rexistro {
 	@XmlElement
 	@XmlJavaTypeAdapter(AdaptadorDate.class)
 	protected Date data;
-	
+
 	/**
 	 * Nome do empregado que realiza o rexistro dunha acción
 	 */
@@ -42,7 +42,7 @@ public class Rexistro {
 	 */
 	@XmlElement
 	protected String tipoAnimal;
-	
+
 	/**
 	 * Acción que realiza o empregado
 	 */
@@ -60,11 +60,11 @@ public class Rexistro {
 	/**
 	 * Construtor da clase Rexistro Crea unha acción xenérica do empregado sobre un animal nunha data dada
 	 * 
-	 * @param data                Data de nacemento do animal.
-	 * @param nomeEmpregado       Nome do empregado que rexistra a acción.
-	 * @param codigoAnimal        Código do animal realiza a acción.
-	 * @param tipoAnimal          Tipo de animal segundo a clase pola que se representa.
-	 * @param accion              Tipo de accion rexistrada.
+	 * @param data          Data de nacemento do animal.
+	 * @param nomeEmpregado Nome do empregado que rexistra a acción.
+	 * @param codigoAnimal  Código do animal realiza a acción.
+	 * @param tipoAnimal    Tipo de animal segundo a clase pola que se representa.
+	 * @param accion        Tipo de accion rexistrada.
 	 */
 	public Rexistro(Date data, String nomeEmpregado, String codigoAnimal, String tipoAnimal, Accion accion) {
 		this.data = data;
@@ -75,13 +75,13 @@ public class Rexistro {
 	}
 
 	/**
-	 * Construtor da clase Rexistro Crea unha acción xenérica do empregado sobre un animal e usando a data
-	 * actual como a de rexistro desta acción
+	 * Construtor da clase Rexistro Crea unha acción xenérica do empregado sobre un animal e usando a data actual como a
+	 * de rexistro desta acción
 	 * 
-	 * @param nomeEmpregado       Nome do empregado que rexistra a acción.
-	 * @param codigoAnimal        Código do animal realiza a acción.
-	 * @param tipoAnimal          Tipo de animal segundo a clase pola que se representa.
-	 * @param accion              Tipo de accion rexistrada.
+	 * @param nomeEmpregado Nome do empregado que rexistra a acción.
+	 * @param codigoAnimal  Código do animal realiza a acción.
+	 * @param tipoAnimal    Tipo de animal segundo a clase pola que se representa.
+	 * @param accion        Tipo de accion rexistrada.
 	 */
 	public Rexistro(String nomeEmpregado, String codigoAnimal, String tipoAnimal, Accion accion) {
 		this(new Date(), nomeEmpregado, codigoAnimal, tipoAnimal, accion);
@@ -99,8 +99,8 @@ public class Rexistro {
 	}
 
 	/**
-	 * Construtor da clase Rexistro Crea unha acción xenérica do empregado non relacionada con animais e
-	 * usando como data por defecto a actual
+	 * Construtor da clase Rexistro Crea unha acción xenérica do empregado non relacionada con animais e usando como
+	 * data por defecto a actual
 	 * 
 	 * @param nomeEmpregado Nome do empregado que rexistra a acción.
 	 * @param accion        Tipo de accion rexistrada.
@@ -126,7 +126,7 @@ public class Rexistro {
 	public Accion getAccion() {
 		return accion;
 	}
-	
+
 	/**
 	 * Obtén o valor de nomeEmpregado
 	 *
@@ -158,6 +158,13 @@ public class Rexistro {
 		if (codigoAnimal != null)
 			resultado += "\n    > Sobre o  animal co codigo: '" + codigoAnimal + "'";
 		return resultado;
+	}
+
+	/**
+	 * @return the tipoAnimal
+	 */
+	public String getTipoAnimal() {
+		return tipoAnimal;
 	}
 
 }

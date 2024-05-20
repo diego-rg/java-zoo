@@ -16,6 +16,7 @@ import fp.daw.prog.zoo.rexistro.TipoAccion.Accion;
 
 public abstract class CtrlRexistro {
 
+	protected static final String SPLIT_CHAR = ";";
 	protected TipoFicheiro tipoFicheiro;
 	protected File ficheiro = null;
 
@@ -23,13 +24,13 @@ public abstract class CtrlRexistro {
 	 * Listado que garda todos os rexistros de accións realizado polo empregado.
 	 */
 	protected List<Rexistro> rexistros = new ArrayList<Rexistro>();
-	
+
 	/**
 	 * Construtor da clase CtrlRexistro.
 	 * 
-	 * @param  rutaFicheiro Ruta ao ficheiro
-	 * @param  nomeFicheiro O nome do ficheiro.
-	 * @param  tipoFicheiro O tipo de ficheiro onde gardamos os datos do rexistro de accións
+	 * @param rutaFicheiro Ruta ao ficheiro
+	 * @param nomeFicheiro O nome do ficheiro.
+	 * @param tipoFicheiro O tipo de ficheiro onde gardamos os datos do rexistro de accións
 	 * @throws Exception
 	 */
 	public CtrlRexistro(String rutaFicheiro, String nomeFicheiro, TipoFicheiro tipoFicheiro) throws Exception {
@@ -37,21 +38,20 @@ public abstract class CtrlRexistro {
 			throw new Exception("Debe indicar unha rota válida e un nome de ficheiro para gardar os rexistros");
 
 		this.tipoFicheiro = tipoFicheiro;
-		nomeFicheiro = nomeFicheiro.endsWith(tipoFicheiro.getFormato()) ? nomeFicheiro : nomeFicheiro + tipoFicheiro.getFormato();
+		nomeFicheiro = nomeFicheiro.endsWith(tipoFicheiro.getFormato()) ? nomeFicheiro
+				: nomeFicheiro + tipoFicheiro.getFormato();
 		ficheiro = new File(rutaFicheiro + nomeFicheiro);
 	}
 
 	/**
-	 * Engade os rexistros ao final do sistema de ficheiros utilizado. No caso de non existir o ficheiro
-	 * crearao
+	 * Engade os rexistros ao final do sistema de ficheiros utilizado. No caso de non existir o ficheiro crearao
 	 * 
 	 * @param rexistros Os rexistros a engadir
 	 */
 	public abstract void gardarRexistros(List<Rexistro> rexistros);
 
 	/**
-	 * Engade o rexistro ao final do sistema de ficheiros utilizado * No caso de non existir o ficheiro
-	 * crearao
+	 * Engade o rexistro ao final do sistema de ficheiros utilizado * No caso de non existir o ficheiro crearao
 	 * 
 	 * @param rexistros A rexistros engadir
 	 */
@@ -70,14 +70,11 @@ public abstract class CtrlRexistro {
 	public void borrarFicheiro() {
 		if (ficheiro == null) {
 			System.out.println("Debe indicar un ficheiro (o valor indicao é nulo).");
-		}
-		else if (!ficheiro.exists()) {
+		} else if (!ficheiro.exists()) {
 			System.out.println("O ficheiro indicado non existe.");
-		}
-		else if (ficheiro.delete()) {
+		} else if (ficheiro.delete()) {
 			System.out.println("O ficheiro foi borrado con éxito.");
-		}
-		else {
+		} else {
 			System.out.println("Non se puido borrar o ficheiro.");
 		}
 	}
@@ -106,11 +103,11 @@ public abstract class CtrlRexistro {
 	}
 
 	/**
-	 * Busca as accións permitidas para o tipo de empregado indicado e devolve so as que se permiten a cada
-	 * tipo de empregado
+	 * Busca as accións permitidas para o tipo de empregado indicado e devolve so as que se permiten a cada tipo de
+	 * empregado
 	 * 
-	 * @param  empregado Empregado para o que se buscan as accións permitidas en función do seu rol
-	 * @return           Listado de accións permitidas ao usuario indicado
+	 * @param empregado Empregado para o que se buscan as accións permitidas en función do seu rol
+	 * @return Listado de accións permitidas ao usuario indicado
 	 */
 	public static List<Accion> buscarAccions(Empregado empregado) {
 		List<Accion> accions = new ArrayList<Accion>();
@@ -118,11 +115,9 @@ public abstract class CtrlRexistro {
 			return accions;
 		if (empregado instanceof Garda) {
 			accions.addAll(Arrays.asList(TipoAccion.AccionGarda.values()));
-		}
-		else if (empregado instanceof Auxiliar) {
+		} else if (empregado instanceof Auxiliar) {
 			accions.addAll(Arrays.asList(TipoAccion.AccionAuxiliar.values()));
-		}
-		else if (empregado instanceof Veterinario) {
+		} else if (empregado instanceof Veterinario) {
 			accions.addAll(Arrays.asList(TipoAccion.AccionVeterinario.values()));
 		}
 		return accions;
@@ -144,6 +139,6 @@ public abstract class CtrlRexistro {
 	 */
 	public List<Rexistro> getRexistros() {
 		return rexistros;
-	}	
-	
+	}
+
 }

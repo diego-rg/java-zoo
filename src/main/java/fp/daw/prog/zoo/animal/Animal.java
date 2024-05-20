@@ -1,3 +1,4 @@
+
 package fp.daw.prog.zoo.animal;
 
 import java.util.Collection;
@@ -38,9 +39,8 @@ public abstract class Animal {
 	/**
 	 * Método abstracto para descansar un animal.
 	 */
-	public abstract void descansar();	
-	
-		
+	public abstract void descansar();
+
 	/**
 	 * Obtén o valor de codigo
 	 *
@@ -76,7 +76,7 @@ public abstract class Animal {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	/**
 	 * Método para obter a data de nacemento do animal.
 	 * 
@@ -94,13 +94,13 @@ public abstract class Animal {
 	public void setDataNacemento(Date dataNacemento) {
 		this.dataNacemento = dataNacemento;
 	}
-	
+
 	/**
 	 * Busca un animal entre unha colección de animais
 	 * 
-	 * @param  animais listado de animais sobre o que buscar
-	 * @param  codigo  Codigo do animal que queremos buscar
-	 * @return         O animal buscado se existe, e senón null
+	 * @param animais listado de animais sobre o que buscar
+	 * @param codigo  Codigo do animal que queremos buscar
+	 * @return O animal buscado se existe, e senón null
 	 */
 	public static Animal buscarAnimal(Collection<Animal> animais, String codigo) {
 		if (animais == null)
@@ -111,14 +111,14 @@ public abstract class Animal {
 		}
 		return null;
 	}
-	
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public String toString() {
-		return "Animal [codigo: '" + codigo + "'] => tipo: '" + this.getClass().getSimpleName() + "', nome: '" + nome + "', dataNacemento: '" + dataNacemento + "'";
+		return "Animal [codigo: '" + codigo + "'] => tipo: '" + this.getClass().getSimpleName() + "', nome: '" + nome
+				+ "', dataNacemento: '" + dataNacemento + "'";
 	}
 
 }
