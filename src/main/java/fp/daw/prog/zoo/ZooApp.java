@@ -81,9 +81,9 @@ public class ZooApp {
 		Integer idTipoFicheiro = Util.solicitarExtension();
 		// Solicitamos o directorio pai onde se gardará
 		String directorio = Util.solicitarDatoPorConsola(
-				"Indica a subcarpeta en 'resources' onde o queres gardar ou preme enter para gardala directamente nese directorio");
+				"Indica a subcarpeta en 'resources' onde o queres gardar ou introduce '/' para gardala directamente nese directorio");
 		// Ruta final indicada tendo eu conta o inputo do usuario
-		String rutaFinal = directorio.isEmpty() ? RUTA_POR_DEFECTO : RUTA_POR_DEFECTO + directorio + File.separator;
+		String rutaFinal = directorio.equals("/") ? RUTA_POR_DEFECTO : RUTA_POR_DEFECTO + directorio + File.separator;
 		// Creamos a carpeta se non existe
 		Util.comprobarDirectorio(rutaFinal);
 
@@ -120,8 +120,15 @@ public class ZooApp {
 				// Configuramos outro ficheiro para gardar o rexistro de accións
 				nomeFicheiroDatos = solicitarNomeFicheiroPorConsola();
 				Integer novaIdTipoFicheiro = Util.solicitarExtension();
+				// Solicitamos o directorio pai onde se gardará
+				directorio = Util.solicitarDatoPorConsola(
+						"Indica a subcarpeta en 'resources' onde o queres gardar ou introduce '/' para gardala directamente nese directorio");
+				// Ruta final indicada tendo eu conta o inputo do usuario
+				rutaFinal = directorio.equals("/") ? RUTA_POR_DEFECTO : RUTA_POR_DEFECTO + directorio + File.separator;
+				// Creamos a carpeta se non existe
+				Util.comprobarDirectorio(rutaFinal);
 				ctrlRexistro = inicializarControladorRexistrosPorConsola(TipoFicheiro.getTipo(novaIdTipoFicheiro),
-						RUTA_POR_DEFECTO, nomeFicheiroDatos);
+						rutaFinal, nomeFicheiroDatos);
 				break;
 			case 6:
 				// Se dá un erro porque inserimos un valor non numérico, entón limpamos o buffer

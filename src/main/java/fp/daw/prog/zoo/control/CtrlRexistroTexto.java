@@ -48,22 +48,19 @@ public class CtrlRexistroTexto extends CtrlRexistro {
 			// Percorremos os rexistros e ímolos gardando no ficheiro
 			for (Rexistro rexistro : rexistros) {
 				// Escribir o contido no ficheiro
-
+				String line;
 				// Se NON usa animal = 3 datos
 				if (rexistro.getCodigoAnimal() == null) {
-					String line = Util.converterData(rexistro.getData()) + SPLIT_CHAR + rexistro.getNomeEmpregado()
+					line = Util.converterData(rexistro.getData()) + SPLIT_CHAR + rexistro.getNomeEmpregado()
 							+ SPLIT_CHAR + rexistro.getAccion();
-					bufferedWriter.write(line);
-					bufferedWriter.newLine(); // Engade un salto de liña
 				} else {
-
 					// Se usa animal = 5 datos
-					String line = Util.converterData(rexistro.getData()) + SPLIT_CHAR + rexistro.getNomeEmpregado()
+					line = Util.converterData(rexistro.getData()) + SPLIT_CHAR + rexistro.getNomeEmpregado()
 							+ SPLIT_CHAR + rexistro.getCodigoAnimal() + SPLIT_CHAR + rexistro.getTipoAnimal()
 							+ SPLIT_CHAR + rexistro.getAccion();
-					bufferedWriter.write(line);
-					bufferedWriter.newLine(); // Engade un salto de liña
 				}
+				bufferedWriter.write(line);
+				bufferedWriter.newLine(); // Engade un salto de liña
 			}
 			System.out.println("Rexistros gardados con éxito.");
 

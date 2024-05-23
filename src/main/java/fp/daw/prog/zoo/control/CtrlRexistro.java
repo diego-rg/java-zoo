@@ -90,6 +90,7 @@ public abstract class CtrlRexistro {
 		String rutaNovoFicheiro = ficheiro.getParent() + File.separator + novoNome + tipoFicheiro.getFormato();
 		File novoFicheiro = new File(rutaNovoFicheiro);
 		Boolean resultado = ficheiro.renameTo(novoFicheiro);
+		ficheiro = novoFicheiro;
 		return resultado;
 	}
 
